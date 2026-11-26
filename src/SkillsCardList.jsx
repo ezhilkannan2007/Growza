@@ -8,39 +8,45 @@ import SkillsCard from './SkillsCard'
 
 function SkillsCardList(){
   const skills = [
-    {image : linkedin,
+    {id:1,
+    image : linkedin,
     title : "LinkedIn",
     desc: "Know everything about LinkedIn",
     price:"$99.0",
     },
-    {image : cpp,
+    {id:2,
+    image : cpp,
     title : "cpp",
     desc: "Know everything about cpp",
     price:"$99.0",
     },
-    {image : java,
+    {id:3,
+    image : java,
     title : "java",
     desc: "Know everything about java",
     price:"$99.0",
     },
-    {image : node,
+    {id:4,
+    image : node,
     title : "node",
     desc: "Know everything about node",
     price:"$99.0",
     },
-    {image : python,
+    {id : 5,
+    image : python,
     title : "python",
     desc: "Know everything about python",
     price:"$99.0",
     },
-    {image : ui,
+    {id : 6,
+    image : ui,
     title : "LinkedIn",
     desc: "Know everything about ui",
     price:"$99.0",
     }
   ]
 
-  const skillsList = skills.map((skill,index)=>(<SkillsCard key= {index} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price}></SkillsCard>))
+  const skillsList = skills.map((skill)=>(<SkillsCard key= {skill.id} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price}></SkillsCard>))
   return (
     <>
     <div className="container">

@@ -4,12 +4,12 @@ function Navbar() {
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-light rounded shadow m-1 mt-2">
-      <div className="container-lg">
+      <div className="container-xl">
         <a href="#" className="text-dark navbar-brand"><b><i style={styles} className="bi bi-mortarboard-fill"></i> Grow<span style={styles}>za</span></b></a>
 
         <button className="navbar-toggler " data-bs-target=".links" data-bs-toggle="collapse"><span className="navbar-toggler-icon"></span></button>
         
-        <div id="links" className="text links collapse navbar-collapse justify-content-center">
+        <div id="links" className="text links collapse navbar-collapse justify-content-end">
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="text nav-link" href="#">Home</a>

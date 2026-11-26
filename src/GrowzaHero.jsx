@@ -2,7 +2,7 @@ import hero from './assets/hero.png'
 function GrowzaHero(){
   return(
     <>
-    <div className="container-fluid p-0 justify-content-start">
+    <div className="container-xl p-0 justify-content-start">
       <div className="row px-3 bg-light">
         <div className="col-12 col-md-6 bg-light p-3 text-start" >
           <button className="btn btn-sm text-dark rounded-pill mb-3 fw-bold">Learn . Build . Grow</button>

@@ -12,8 +12,8 @@ function SkillsCard(props){
   }
   return(
     
-      <div className=" col-6 col-md-4 flex-shrink-0">
-            <div className="card">
+      <div className=" col-6 col-md-3 flex-shrink-0">
+            <div className="card p-1">
               <img src={props.image} style={styles} alt="react course" className="card-img-top rounded"/>
               <div className="card-body">
                 <h6 className="card-title text-start">{props.title}</h6>

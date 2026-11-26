@@ -10,14 +10,7 @@ function App() {
       <>
         <Navbar></Navbar>
         <GrowzaHero></GrowzaHero>
-        
-         
-            
         <SkillsCardList></SkillsCardList>
-
-          
-
-
       </>
   );
 }
