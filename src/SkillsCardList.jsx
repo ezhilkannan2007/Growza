@@ -40,7 +40,7 @@ function SkillsCardList(){
     }
   ]
 
-  const skillsList = skills.map((skill)=>(<SkillsCard image={skill.image} title={skill.title} desc={skill.desc} price={skill.price}></SkillsCard>))
+  const skillsList = skills.map((skill,index)=>(<SkillsCard key= {index} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price}></SkillsCard>))
   return (
     <>
     <div className="container">
