@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import cpp from './assets/cpp.png'
 import java from './assets/java.jpeg'
 import linkedin from './assets/linkedin.jpeg'
@@ -47,12 +47,16 @@ function SkillsCardList(){
     }
   ]);
 
+  useEffect(()=>{
+   console.log("use effect in skillscardlist used.") 
+  })
+
   function deleteCard(id){
     const newskillsList = skills.filter((skill)=>skill.id!=id);
     setSkills(newskillsList);
   }
 
-  const skillsList = skills.map((skill)=>(<SkillsCard key= {skill.id} id= {skill.id} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price} deleteCard={()=>deleteCard(skill.id)}></SkillsCard>))
+  const skillsList = skills.map((skill)=>(<SkillsCard key= {skill.id} id= {skill.id} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price} deleteCard={deleteCard}></SkillsCard>))
   
   return (
     <>
