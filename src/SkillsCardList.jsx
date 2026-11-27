@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import cpp from './assets/cpp.png'
 import java from './assets/java.jpeg'
 import linkedin from './assets/linkedin.jpeg'
@@ -7,7 +8,7 @@ import ui from './assets/ui.jpeg'
 import SkillsCard from './SkillsCard'
 
 function SkillsCardList(){
-  const skills = [
+  const [skills,setSkills] = useState([
     {id:1,
     image : linkedin,
     title : "LinkedIn",
@@ -44,9 +45,15 @@ function SkillsCardList(){
     desc: "Know everything about ui",
     price:"$99.0",
     }
-  ]
+  ]);
 
-  const skillsList = skills.map((skill)=>(<SkillsCard key= {skill.id} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price}></SkillsCard>))
+  function deleteCard(id){
+    const newskillsList = skills.filter((skill)=>skill.id!=id);
+    setSkills(newskillsList);
+  }
+
+  const skillsList = skills.map((skill)=>(<SkillsCard key= {skill.id} id= {skill.id} image={skill.image} title={skill.title} desc={skill.desc} price={skill.price} deleteCard={()=>deleteCard(skill.id)}></SkillsCard>))
+  
   return (
     <>
     <div className="container">
