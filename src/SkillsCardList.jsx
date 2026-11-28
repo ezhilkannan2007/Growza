@@ -1,16 +1,10 @@
-import { useEffect, useState } from 'react'
 import SkillsCard from './SkillsCard'
+import useFetch from './useFetch';
 
 function SkillsCardList(){
-  const [skills,setSkills] = useState(null);
-  const [error,setError] = useState(null);
-
-  useEffect(()=>{
-   fetch("http://localhost:3000/skills")
-   .then((response)=>{return response.json()})
-   .then((data)=>setSkills(data))
-   .catch(err=>{setError(err.message)});
-  },[])
+  
+  const [skills,error] = useFetch("http://localhost:3000/skills");
+  
 
   function deleteCard(id){
     const newskillsList = skills.filter((skill)=>skill.id!=id);
@@ -18,10 +12,10 @@ function SkillsCardList(){
   }
   if(!skills){
     return (
-    <>
+    {error} && <>
     <div className="d-flex justify-content-center">
       <div className="d-flex spinner-border text-dark text-center justify-content-center" role="status">
-        <span className="visually-hidden text-center">Loading...</span>
+        <span className="visually-hidden text-center">Loading...{console.log(error)}</span>
       </div>
     </div>
     </>
