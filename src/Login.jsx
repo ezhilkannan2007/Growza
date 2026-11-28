@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import useFetch from './useFetch';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+
   const formStyle = {
     width: "100%",
     maxWidth: "500px", 
@@ -11,7 +13,8 @@ function Login() {
   const [users,error] = useFetch("http://localhost:4000/users");
   const [pwd1,setPwd1] = useState("");
   const [Id,setId] = useState("");
-
+  const [passwrong , setPassWrong] = useState(false);
+  const navigate = useNavigate();
 
   function handlepwd1(event){
     setPwd1(event.target.value);
@@ -22,7 +25,7 @@ function Login() {
   }
 
   function checkPassword(event){
-    if(!users){
+    if(!users || error){
         console.log("please wait until home page loads");
         return <><p>loading</p></>
     }
@@ -30,10 +33,12 @@ function Login() {
     const matcheduser = users.find((user)=>{return(user.id==String(Id) && user.password == String(pwd1))})
     if(matcheduser){
       console.log("Passwords matched")
+      navigate('/home')
     }
     else{
       console.log(users)
       console.log("password wrong")
+      setPassWrong(true);
     }
   }
 
@@ -43,14 +48,22 @@ function Login() {
       
       <form style={formStyle} className="p-4 border rounded shadow bg-white">
         <h1 className="text-dark"><i className="bi bi-mortarboard-fill"></i> Grow<span className='text'>za</span></h1>
-        <div className="form-outline mb-4">
-          <input type="email" id="form2Example1" value={Id} onChange={handleId} className="form-control" />
-          <label className="form-label" htmlFor="form2Example1">Id</label>
+        <div className="row form-outline mb-4 d-flex justify-content-between">
+          <div className="col-3">
+            <label className="form-label my-1" htmlFor="form2Example1"><b>Id</b></label>
+          </div>
+          <div className="col">
+            <input type="email" id="form2Example1" value={Id} onChange={handleId} className="form-control" />
+          </div>
         </div>
 
-        <div className="form-outline mb-4">
-          <input type="password" id="form2Example2" className="form-control" value={pwd1} onChange={handlepwd1}/>
-          <label className="form-label" htmlFor="form2Example2">Password</label>
+        <div className="row form-outline mb-4 d-flex">
+          <div className="col-3">
+            <label className="form-label" htmlFor="form2Example2"><b>Password</b></label>
+          </div>
+          <div className="col">
+            <input type="password" id="form2Example2" className="form-control" value={pwd1} onChange={handlepwd1}/>
+          </div>
         </div>
 
 
@@ -69,7 +82,7 @@ function Login() {
 
         {/* Added w-100 to make the button take up the full form width */}
         <button type="button" onClick={checkPassword} className="btn btn-primary w-100 mb-4">Log in</button>
-
+        {passwrong && <><h6 className="text-danger">Password wrong.Try again</h6></>}
         
       </form>
 

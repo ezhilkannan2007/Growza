@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 function Navbar() {
   const styles = {
     color : "#6f2dbd"
   }
+  const navigate = useNavigate()
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-light rounded shadow m-1 mt-2">
       <div className="container-xl">
@@ -23,7 +26,7 @@ function Navbar() {
           </ul>
         </div>
         <div className="links collapse navbar-collapse justify-content-end">
-          <button className="btn btn-outline-success">Login</button>
+          <button className="btn btn-outline-success" onClick={()=>navigate("/")}>Login</button>
         </div>
       </div>
     </nav>
